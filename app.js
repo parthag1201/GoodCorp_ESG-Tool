@@ -96,11 +96,48 @@ app.post("/calculate_esg", (req, res) => {
   // const waste_management = parseFloat(req.body.waste_management);
 
   // // Define weights for each parameter
-  // const carbon_footprint_weight = 0.3;
-  // const energy_consumption_weight = 0.25;
-  // const water_usage_weight = 0.2;
-  // const waste_management_weight = 0.25;
-
+  // Weights for E parameter
+  const energyConsumption_weight =0.5;
+  const waterConsumption_weight = 0.5;
+  const wasteProduction_weight =0.5;
+  const wasteRecycled_weight = 0.5;
+  const co2Emissions_weight=0.5;
+  const measuresToReduceRawMaterials_weight=0.5;                          
+  const measuresToReduceCo2Emissions_weight=0.5;                       
+  const energyCosts_weight=0.5;         
+  const numEnvironmentalAccidents_weight=0.5;                       
+  const siteEnergyEfficiency_weight=0.5;                 
+  const reducedResourceUse_weight=0.5;               
+  const co2EmissionsMarketComparison_weight=0.5;                          
+  const recyclingRateComparison_weight=0.5;
+  //Weights for S parameter
+  const employeeWellBeingSatisfaction_weight=0.3;
+  const productRecallRate_weight=0.3;
+  const workplaceImprovement_weight=0.3;
+  const humanRightsCode_weight=0.3;
+  const labourRightsRemediation_weight=0.3;
+  const healthSafetyAssessments_weight=0.3;
+  const communityEngagement_weight=0.3;
+  const skillUpgradeApproach_weight=0.3;
+  const supplyChainAction_weight=0.3;
+  const underrepresentedGroups_weight=0.3;
+  const unconsciousBiasAddress_weight=0.3;
+  const annualContributionLocalCommunities_weight=0.3;
+  const supplyChainTransparency_weight=0.3;
+  const philanthropicActivities_weight=0.3;
+  //Weights for G parameter
+  const codeOfEthics_weight=0.2;
+  const identifyAssessRisks_weight=0.2;
+  const riskManagementPractices_weight=0.2;
+  const executiveCompensationDisclosure_weight=0.2;
+  const diverseCandidatesBoard_weight=0.2;
+  const allegationsCorruptionUnethicalPractices_weight=0.2;
+  const complianceTrainings_weight=0.2;
+  const whistleblowerHotline_weight=0.2;
+  const lobbyingDonations_weight=0.2;
+  const rulesRegulationsUpdateFrequency_weight=0.2;
+  const boardMeetingsFrequency_weight=0.2;
+  const executiveCompensationSustainability_weight=0.2; 
   // // Normalize the input parameters to a scale of 0-100
   // const normalized_carbon_footprint = normalizeParameter(carbon_footprint);
   // const normalized_energy_consumption = normalizeParameter(energy_consumption);
