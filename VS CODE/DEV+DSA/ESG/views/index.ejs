@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESG Score Calculator</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+    <style>
+      
+      /* Additional inline styles */
+
+
+      body {
+        font-family: Arial, sans-serif;
+        font-family: Arial, sans-serif;
+        background-image: url("/images/calculator_esg.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        background-color: #E4F9F5;
+
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        animation: fade-in 1s ease;
+
+        background: rgba(253, 250, 250, 0.8);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        width: 300px;
+      }
+
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6347;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 200px;
+      }
+
+      button:hover {
+        background-color: #ff473f;
+      }
+
+      .esg-elements {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .esg-elements h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .esg-elements p {
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .attribution {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        margin-top: 30px;
+      }
+
+      /* Animation effects */
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes scale-up {
+        from {
+          transform: scale(0.95);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .navbar {
+        
+        background: rgba(253, 250, 250, 1);
+        color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        z-index: 999;
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .navbar li {
+        margin: 0 10px;
+        
+     }
+
+
+      .navbar a {
+        text-decoration: none;
+        color: #f90143;
+        font-weight:600;
+        font-size: large;
+      }
+
+
+      .footer {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        position: fixed;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="https://codetheweb.blog/assets/img/icon2.png" alt="logo">
+    <nav> 
+      <ul >
+        <li ><a href="/">Home</a></li>
+        <li ><a href="/calculator">Score Calculator</a></li>
+        <li ><a href="/recommend">Recommendations</a></li>
+        <li ><a href="/aboutus">Contact Us</a></li>
+        <li ><a href="/contact_us">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <br><br><br>
+
+    <div class="container" >
+      <!-- <h1 class="fade-in">ESG Score Calculator</h1> -->
+  
+      <div class="content" >
+        <h2>What is ESG?</h2>
+        <div class="card-container">
+          <div class="card">
+            <h3>Environmental</h3>
+            <p>
+              Your company’s impact on the natural environment, involving factors such as carbon emissions, energy consumption, waste management, water usage, and the efforts towards mitigating climate change and preserving biodiversity.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Social</h3>
+            <p>
+              How your company manages relationships with employees, customers, suppliers, communities, and other stakeholders; spanning across employee diversity and inclusion, labor standards, human rights, community engagement, customer satisfaction, and product safety.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Governance</h3>
+            <p>
+              How your company is managed, including its leadership, board structure, shareholder rights, and transparency. Good governance ensures accountability, integrity, and ethical decision-making and involves assessing factors such as board independence, executive compensation, risk management, and the presence of strong internal controls.
+            </p>
+          </div>
+        </div>
+        <br>
+        <h2>Why it is Indispensable in the Modern Corporate World</h2>
+        <p class="card">
+          ESG evaluation is crucial for companies to ensure long-term sustainability, meet stakeholder expectations, and enhance financial performance. By assessing environmental impact, social responsibility, and governance practices, companies can minimize risks, improve their reputation, and maintain stakeholder trust. Effective management of ESG factors can lead to cost savings, operational efficiencies, and a competitive edge. It also helps identify and mitigate risks, access capital, comply with regulations, and attract responsible investors. Ultimately, ESG evaluation is vital for companies to navigate the evolving business landscape, address societal concerns, and demonstrate their commitment to responsible and ethical practices.
+        </p>
+        <br>
+        <h2>Its Loopholes</h2>
+        <p class="card">
+          With all its merits, ESG is no exception to the two-sided coin paradigm. The lack of standardized metrics and methodologies, "greenwashing," where companies present a more favorable ESG image than their actual practices warrant, and selective reporting can lead to inconsistency and subjectivity in evaluating and comparing companies. This disarray makes it difficult to accurately assess and compare ESG performance across different industries and regions. Since ESG ratings heavily rely on the data provided by companies, leaving room for potential inaccuracies and biases, they may not always capture the full complexity of a company's ESG performance, as they tend to focus on measurable factors and may overlook certain intangible aspects or emerging issues.
+        </p>
+        <br>
+        <h2>The Best of Both Worlds: GoodCorp</h2>
+        <p class="card">
+          Climb up the corporate ESG ladder unhindered by greenwashers and fraudulent reporters with GoodCorp, the most innovative and unbiased ESG calculator, which offers a baseline for absolute comparison. Our unique technology features a tailored subjective questionnaire, a scoring method based on your performance relative to your competitors, and a verification system to filter inconsistencies in reporting, providing you with the most transparent ranking system – a raw score out of 24. Enjoy the merits of a good ESG score without any drawbacks - find out where you stand now.
+        </p>
+        <br>
+        <h2>Ironing Out the Kinks: Our Methodology</h2>
+        <h3>Subjective Questionnaire:</h3>
+        <p class="card">
+          GoodCorp features a comprehensive questionnaire with eight subjective questions under each pillar – Environment, Social, and Governance. In order to simplify the scoring process, thorough data mining has been conducted to slot all possible answers into three ranges, with a predetermined score for each. The user must also attach document proof for each answer to view their score.
+        </p>
+        <br>
+        <h3>Scoring Methodology:</h3>
+        <p class="card">
+          Once all the required fields have been filled, a code sums up your total score in each section – E, S, and G.
+        </p>
+        <br>
+        <h3>Normalization:</h3>
+        <p class="card">
+          The code then attributes weightages to each section, respectively. The final step of the algorithm is the calculation of the weighted average of the E, S, and G scores, generating the ESG score, out of a total of 24.
+        </p>
+        <br>
+        <h3>Ranking System:</h3>
+        <p class="card">
+          Once a profile is entered into our database, our code ranks the company based on the score, providing you with a transparent review of your ESG performance.
+        </p>
+        <br><br><br>
+
+
+
+        <h4 class="align-center">So give our ESG Calculator a try!</h4>
+
+        <form id="esg_form" action="/calculator" method="get" class="fade-in"><button type="submit" class="scale-up">ESG Calculator</button></form>
+        
+          
+
+
+      </div>
+
+
+
+      <div class="attribution slide-up">
+        <p>ESG Score Calculator &copy; 2023. All rights reserved.</p>
+        <p>
+          Attribution: Icons made by
+          <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+            >Freepik</a
+          >
+          from
+          <a href="https://www.flaticon.com/" title="Flaticon"
+            >www.flaticon.com</a
+          >
+        </p>
+      </div>
+    </div>
+    <br><br><br>    
+    <div class="footer">
+      <p>Contact us: email@example.com | Phone: 123-456-7890</p>
+    </div>
+  </body>
+</html>
+

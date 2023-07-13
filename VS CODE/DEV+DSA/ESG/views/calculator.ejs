@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESG Score Calculator</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <style>
+      /* Additional inline styles */
+
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("/images/esgcalc.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        animation: fade-in 1s ease;
+
+        background: rgba(253, 250, 250, 0.8);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        width: 300px;
+      }
+
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6347;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 200px;
+      }
+
+      button:hover {
+        background-color: #ff473f;
+      }
+
+      .esg-elements {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .esg-elements h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .esg-elements p {
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .attribution {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        margin-top: 30px;
+      }
+
+      /* Animation effects */
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes scale-up {
+        from {
+          transform: scale(0.95);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .navbar {
+        background-color: #4caf50;
+        color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        z-index: 999;
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .navbar li {
+        margin: 0 10px;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .footer {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+      .container h2{
+        color: #ff6347;
+      }
+ 
+
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      
+      <ul >
+
+        <li ><a href="/">Home</a></li>
+        <li ><a href="/calculator">Score Calculator</a></li>
+        <li ><a href="/recommend">Recommendations</a></li>
+        <li ><a href="/aboutus">Contact Us</a></li>
+        <li ><a href="/contact_us">Contact Us</a></li>
+
+      </ul>
+    </div>
+<div class="container">
+  <h1 class="fade-in">ESG Score Calculator</h1>
+  <form id="esg_form" action="/calculate_esg" method="post" class="fade-in opac">
+    
+    <!-- <label for="carbon_footprint">Carbon Footprint:</label>
+    <select name="carbon_footprint" id="carbon_footprint">
+      <option value="30">30%</option>
+      <option value="60">60%</option>
+      <option value="90">90%</option>
+    </select>
+
+    <label for="energy_consumption">Energy Consumption:</label>
+    <input
+      type="number"
+      id="energy_consumption"
+      name="energy_consumption"
+      required
+    />
+
+    <label for="water_usage">Water Usage:</label>
+    <input type="number" id="water_usage" name="water_usage" required />
+
+    <label for="waste_management">Waste Management:</label>
+    <input
+      type="number"
+      id="waste_management"
+      name="waste_management"
+      required
+    /> -->
+
+    <h2>General</h2>
+    <label for="company_name">Company Name:</label>
+    <input type="text" name="company_name" required />
+
+    <label>Geographic Location:</label>
+    <input type="text" name="geographicLocation" required /><br />
+
+    <label>Industry:</label>
+    <input type="text" name="industry" required /><br />
+
+    <label>Annual Revenue:</label>
+    <input type="number" name="annualRevenue" required /><br />
+
+    <label>Average number of employees over the past 3 years (FTE):</label>
+    <input type="number" name="averageEmployees" required /><br />
+
+    <label>New hirings over the past 3 years (FTE):</label>
+    <input type="number" name="newHirings" required /><br />
+
+    <label
+      >Are the aforementioned values documented in a sustainability report
+      (e.g. GRI)?</label
+    >
+    <select name="sustainabilityReport" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    <label>Number of KPIs measured (across all three components)?</label>
+    <select name="numberOfKPIs" required>
+      <option value="a">20 or more</option>
+      <option value="b">10-15</option>
+      <option value="c">5 or fewer</option></select
+    ><br />
+
+    <label>Are objectives and risks sufficiently explained?</label>
+    <select  name="objectivesAndRisks" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    <label>Are plan/actual deviations presented?</label>
+    <select name="planDeviations" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    <h2>Environment</h2>
+    <label
+      >Energy consumption (Consumed electricity) (GWh) – percentage
+      renewable / percentage reduction compared to industry average:</label
+    >
+    <select name="energyConsumption" required>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option></select
+    ><br />
+
+    <label
+      >Water consumption (Consumed water) (m3) percentage reduction compared
+      to industry average:</label
+    >
+    <select name="waterConsumption" required>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option></select
+    ><br />
+
+    <label>Waste (Production of waste) (kg) / percentage reduction:</label>
+    <select name="wasteProduction" required>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option></select
+    ><br />
+
+    <label>Percentage waste recycled (%):</label>
+    <select name="wasteRecycled" required>
+      <option value="a">above 60%</option>
+      <option value="b">40-60%</option>
+      <option value="c">below 40%</option></select
+    ><br />
+
+    <label
+      >CO2 emissions (carbon footprint) (tCO2e) / percentage reduction
+      compared to baseline year:</label
+    >
+    <select name="co2Emissions" required>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option></select
+    ><br />
+
+    <label>Number of measures to reduce the use of raw materials:</label>
+    <select name="rawMaterialReduction" required>
+      <option value="a">above 6</option>
+      <option value="b">4-6</option>
+      <option value="c">below 4</option></select
+    ><br />
+
+    <label>Number of measures to reduce CO2 emissions:</label>
+    <select name="co2EmissionReduction" required>
+      <option value="a">above 6</option>
+      <option value="b">4-6</option>
+      <option value="c">below 4</option></select
+    ><br />
+
+    <label
+      >What are your development of energy costs in % of turnover?</label
+    >
+    <select name="energyCosts" required>
+      <option value="a">5-10%</option>
+      <option value="b">10-15%</option>
+      <option value="c">Above 15%</option></select
+    ><br />
+
+    <label>Number of environmental accidents:</label>
+    <select name="environmentalAccidents" required>
+      <option value="a">Minimal to none</option>
+      <option value="b">Occasional</option>
+      <option value="c">Frequent</option></select
+    ><br />
+
+    <label>How energy efficient are sites/factories?</label>
+    <select name="energyEfficiency" required>
+      <option value="a">High</option>
+      <option value="b">Moderate</option>
+      <option value="c">Low</option></select
+    ><br />
+
+    <label>Percentage of reduced resource use (%):</label>
+    <select name="resourceUseReduction" required>
+      <option value="a">Higher than 20%</option>
+      <option value="b">10-15%</option>
+      <option value="c">Below 10%</option></select
+    ><br />
+
+    <label
+      >CO2 emissions in relation to other market participants (%):</label
+    >
+    <select name="co2EmissionsMarket" required>
+      <option value="a">20% or less</option>
+      <option value="b">Around industry average</option>
+      <option value="c">Above industry average</option></select
+    ><br />
+
+    <label>Recycling rate in relation to competitors (%):</label>
+    <select name="recyclingRate" required>
+      <option value="a">Higher than 20%</option>
+      <option value="b">Around industry average</option>
+      <option value="c">Below industry average</option></select
+    ><br />
+
+    <h2>Social</h2>
+    <label
+      >What is the percentage of Employee Well-being and Satisfaction in
+      annual survey?</label
+    >
+    <select name="employeeWellBeing" required>
+      <option value="a">Above 80%</option>
+      <option value="b">Between 60-80%</option>
+      <option value="c">Below 60%</option></select
+    ><br />
+
+    <label>What is your product recall rate?</label>
+    <select name="productRecallRate" required>
+      <option value="a">Less than 0.5%</option>
+      <option value="b">Between 0.5% and 1%</option>
+      <option value="c">More than 1%</option></select
+    ><br />
+
+    <label>Number of activities in place to improve workplace:</label>
+    <select name="workplaceImprovement" required>
+      <option value="a">Above 6</option>
+      <option value="b">4-6</option>
+      <option value="c">Below 4</option></select
+    ><br />
+
+    <label
+      >Does your company have a code of conduct or policy that explicitly
+      addresses human rights and labour standards?</label
+    >
+    <select name="humanRightsCode" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    <label
+      >In how many days do you resolve reported labour rights violations and
+      provide remediation to affected workers?</label
+    >
+    <select name="labourRightsRemediation" required>
+      <option value="a">Within 90 days</option>
+      <option value="b">Within 120 days</option>
+      <option value="c">Within 150 days</option></select
+    ><br />
+
+    <label
+      >How frequently are assessments or audits conducted to identify and
+      address potential health and safety hazards in the workplace?</label
+    >
+    <select name="healthSafetyAssessments" required>
+      <option value="a">Monthly or bi-monthly</option>
+      <option value="b">Quarterly</option>
+      <option value="c">Bi-Yearly or less frequently</option></select
+    ><br />
+
+    <label
+      >Does your company engage with stakeholders to understand community
+      needs and align its initiatives accordingly?</label
+    >
+    <select name="communityEngagement" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    <label
+      >Which of the following best describes a company's approach to
+      providing opportunities for skill upgrades and career
+      advancement?</label
+    >
+    <select name="skillUpgradeApproach" required>
+      <option value="a">
+        Does the company actively invest in employee development programs
+        and provide resources for upgrading skills, fostering a supportive
+        environment for career growth?
+      </option>
+      <option value="b">
+        Does the company offer limited opportunities for skill enhancement
+        and career progression, resulting in a stagnant work environment?
+      </option>
+      <option value="c">
+        Does the company neglect employee skill development and fail to
+        provide avenues for career advancement, hindering professional
+        growth within the organization?
+      </option></select
+    ><br />
+
+    <label
+      >What actions does your company take if a supply chain partner is
+      found to have inadequate social or ethical practices?</label
+    >
+    <select name="supplyChainActions" required>
+      <option value="a">
+        Promptly communicate concerns with the supply chain partner, assess
+        the severity and impact of the inadequate practices on the company's
+        reputation and stakeholder expectations, collaborate with the
+        partner to find solutions, conduct regular audits or inspections to
+        verify compliance and share results transparently, consider
+        alternative suppliers if the partner fails to show significant
+        progress.
+      </option>
+      <option value="b">
+        Express concerns with the supply chain partner, but take limited
+        action to address the inadequate practices, relying on the partner
+        to self-correct without significant consequences.
+      </option>
+      <option value="c">
+        Ignore or downplay concerns about the supply chain partner's
+        inadequate practices, prioritizing cost or convenience over social
+        and ethical considerations.
+      </option></select
+    ><br />
+
+    <button type="submit" class="scale-up">Calculate ESG Score</button>
+  </form>
+
+
+
+  <div class="attribution slide-up">
+    <p>ESG Score Calculator &copy; 2023. All rights reserved.</p>
+    <p>
+      Attribution: Icons made by
+      <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+        >Freepik</a
+      >
+      from
+      <a href="https://www.flaticon.com/" title="Flaticon"
+        >www.flaticon.com</a
+      >
+    </p>
+  </div>
+</div>
+<div class="footer">
+  <p>Contact us: email@example.com | Phone: 123-456-7890</p>
+</div>
+</body>
+</html>

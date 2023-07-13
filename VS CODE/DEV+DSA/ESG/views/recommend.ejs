@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESG Score Calculator</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+    <style>
+      
+      /* Additional inline styles */
+
+
+      body {
+        font-family: Arial, sans-serif;
+        font-family: Arial, sans-serif;
+        background-image: url("/images/recommendation.jpeg");
+        background-repeat: no-repeat;
+        background-attachment:fixed;
+        background-size:cover;
+        background-position: center center;
+        background-color: #E4F9F5;
+
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        animation: fade-in 1s ease;
+
+        background: rgba(253, 250, 250, 0.6);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        width: 300px;
+      }
+
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6347;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 200px;
+      }
+
+      button:hover {
+        background-color: #ff473f;
+      }
+
+      .esg-elements {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .esg-elements h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .esg-elements p {
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .attribution {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        margin-top: 30px;
+      }
+
+      /* Animation effects */
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes scale-up {
+        from {
+          transform: scale(0.95);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .navbar {
+        
+        background: rgba(253, 250, 250, 1);
+        color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        z-index: 999;
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .navbar li {
+        margin: 0 10px;
+        
+     }
+
+      .navbar a {
+        text-decoration: none;
+        color: #f90143;
+        font-weight:600;
+        font-size: large;
+      }
+
+      .footer {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        position: fixed;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+
+      .container h2{
+        color: #ff6347;
+
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      
+      <ul >
+
+        <li ><a href="/">Home</a></li>
+        <li ><a href="/calculator">Score Calculator</a></li>
+        <li ><a href="/recommend">Recommendations</a></li>
+        <li ><a href="/aboutus">Contact Us</a></li>
+        <li ><a href="/contact_us">Contact Us</a></li>
+
+      </ul>
+    </div>
+    <br><br><br>
+
+    <div class="container" >
+      <h1>ESG Performance Improvement Recommendations</h1>
+
+      <h2>Environmental (E) </h2>
+  <div class="card">
+
+    <p>- Reduce greenhouse gas emissions and energy consumption through energy-efficient practices and renewable energy adoption.</p>
+    <p>- Implement sustainable waste management strategies, including recycling programs and waste reduction initiatives.</p>
+    <p>- Assess and mitigate environmental risks, such as pollution, habitat destruction, or water scarcity, through responsible resource management.</p>
+    <p>- Develop and implement environmentally friendly product designs and processes, promoting circular economy principles.</p>
+  </div>
+  <br>
+  <h2>Social (S) </h2>
+  <div class="card">
+
+    <p>- Foster diversity and inclusion within the organization, promoting equal opportunities and a respectful work environment.</p>
+    <p>- Strengthen employee health and safety measures, ensuring compliance with relevant regulations and industry best practices.</p>
+    <p>- Enhance community engagement by supporting local initiatives, investing in social development programs, and addressing stakeholders' concerns.</p>
+    <p>- Implement fair labor practices, including employee training and development, equitable compensation, and work-life balance initiatives.</p>
+  </div>
+  <br>
+  <h2>Governance (G) </h2>
+  <div class="card">
+
+    <p>- Strengthen board independence and transparency, ensuring clear separation of powers and unbiased decision-making.</p>
+    <p>- Implement robust governance policies and procedures, including effective risk management and internal controls.</p>
+    <p>- Enhance corporate ethics and integrity by promoting responsible business practices and anti-corruption measures.</p>
+    <p>- Improve disclosure and transparency in financial reporting, ensuring accurate and reliable information for stakeholders.</p>
+  </div> <br>
+  <h2>Stakeholder Engagement</h2>
+  <div class="card">
+ 
+    <p>- Engage with stakeholders, including investors, employees, customers, communities, and regulators, to understand their expectations and concerns.</p>
+    <p>- Develop a comprehensive stakeholder engagement strategy that encourages dialogue, incorporates feedback, and addresses identified issues.</p>
+    <p>- Regularly communicate ESG initiatives, progress, and performance to stakeholders through transparent reporting and disclosure channels.</p>
+  </div> <br>
+  <h2>ESG Integration in Decision-making</h2>
+  <div class="card">
+    
+    <p>- Embed ESG considerations into core business practices and decision-making processes at all levels of the organization.</p>
+    <p>- Incorporate ESG metrics and targets into performance evaluations, executive compensation, and incentive structures.</p>
+    <p>- Encourage innovation and research and development efforts to identify sustainable solutions and technologies.</p>
+  </div> <br>
+  <h2>Collaboration and Partnerships</h2>
+  <div class="card">
+    
+    <p>- Collaborate with industry peers, NGOs, and other stakeholders to share best practices, knowledge, and resources for continuous improvement.</p>
+    <p>- Seek partnerships with suppliers and vendors that align with sustainable practices and ESG goals.</p>
+    <p>- Engage in industry initiatives and collective action to address systemic ESG challenges and drive positive change.</p>
+  </div> <br>
+  <h2>Continuous Monitoring and Improvement</h2>
+  <div class="card">
+    
+    <p>- Regularly assess and monitor ESG performance through key performance indicators (KPIs) and benchmarking against industry peers.</p>
+    <p>- Establish clear targets and timelines for improvement and track progress towards achieving sustainability goals.</p>
+    <p>- Conduct regular ESG audits and independent assessments to identify areas of weakness and opportunities for improvement.</p>
+  </div>
+    </div>
+  </div>
+ 
+    
+      <!-- <h1 class="fade-in">ESG Score Calculator</h1> -->
+  
+
+
+
+
+<br><br><br>
+    <div class="footer">
+      <p>Contact us: email@example.com | Phone: 123-456-7890</p>
+    </div>
+  </body>
+</html>
+
