@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESG Score Calculator</title>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">  -->
+    <link rel="stylesheet" href="css/bootstrap-social.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+    <style>
+      
+      /* Additional inline styles */
+
+
+      body {
+        font-family: Arial, sans-serif;
+        font-family: Arial, sans-serif;
+        background-image: url("/images/calculator_esg.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        background-color: #E4F9F5;
+
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        animation: fade-in 1s ease;
+
+        background: rgba(253, 250, 250, 0.8);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        width: 300px;
+      }
+
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6347;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 200px;
+      }
+
+      button:hover {
+        background-color: #ff473f;
+      }
+
+      .esg-elements {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .esg-elements h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .esg-elements p {
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .attribution {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        margin-top: 30px;
+      }
+
+      /* Animation effects */
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes scale-up {
+        from {
+          transform: scale(0.95);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .navbar {
+        
+        background: rgba(253, 250, 250, 1);
+        color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        z-index: 999;
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .navbar li {
+        margin: 0 10px;
+        
+     }
+
+
+      .navbar a {
+        text-decoration: none;
+        color: #f90143;
+        font-weight:600;
+        font-size: large;
+      }
+
+
+      .footer {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        position: fixed;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+      .logo
+      {
+        padding-top:-50px ;
+        margin-top: -20px;
+        height: 65px;
+        width: 100px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXwBFRcXHhoeOyEhO3xTRlN8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fP/AABEIAIIAggMBIgACEQEDEQH/xAAaAAEAAgMBAAAAAAAAAAAAAAAAAQMEBQYC/8QALxABAAIBAgUDAgMJAAAAAAAAAAECAwQRBRITITEUUWFBQhUiMgYjJDRUcYGCsf/EABcBAQEBAQAAAAAAAAAAAAAAAAABAgP/xAAbEQEAAgMBAQAAAAAAAAAAAAAAARECEiFBYf/aAAwDAQACEQMRAD8A7MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARMxEd52U5dRFLclIm9/aBJmlwx+XVX7zetPiI3OXVV7xet/iY2Wk2+MhLHx6iLW5Mkcl/afqvRYm0gCgAAAAACEtRx+bRi0836npOrHqOnvvy/477brHRttxzGu9JbhEfh0ZL4p1VI5bc0Rb4jf6IpGproOK101L4L1vWPT0vNrUj7prPzHsuqL/2h1WbFq9NSvP0q7XtFY8zv2/42nDMk5dPGWcF8U27/ALzzPy1GhnTfiuCeETknTxjt6rfmmPH5fP3b7qeDWx4+I1pWbai00vNs0Ret6fF6z23TWvXTLPGcYiuw6ocrwe2OvEOSn8RaaXm2ba9L1+L1nsx+DWiNbw/kmJvzXjJGPm5ttp73+mzWrDrs2KuWu0+Y8T7I09rzTbJExas7b+7mr6zNPEfxWMWadPXL04t9nS8TP99+7xxWtp1nEslcHPyxTbNGSa9HeP1bR5NfGa7brhXh36NN7888sfm9+3lYw0AAAAAAI2SAjY2SAjZ5yY+pXbntXvE71nZ7AY0aWYj+YzT/ALPVdNMTE9fLO30m3leAx40vaY6+bx550ekn+oz+Nv1MkBGyQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/9k=" alt="logo">
+    <nav> 
+      <ul >
+        <li ><a href="/">Home</a></li>
+        <li ><a href="/calculator">Calculator</a></li>
+        <li ><a href="/recommend">Recommendations</a></li>
+        <!-- <li ><a href="/aboutus">About us</a></li> -->
+        <li ><a href="/contact_us">Contact Us</a></li>
+        <li><a class=" btn-social btn-google" href="/auth/google" role="button">
+        <i class="fab fa-google"></i>
+        Sign in
+      </a></li>
+    </ul>
+    </nav>
+  </header>
+
+    <br><br><br>

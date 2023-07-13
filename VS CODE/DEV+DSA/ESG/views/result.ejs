@@ -1,173 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>ESG Score Calculator - Result</title>
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
-  <style>
-    /* Additional inline styles */
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #E4F2E7;
-        }
-
-    .navbar {
-      background-color: #4CAF50;
-      color: #fff;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 10px;
-      z-index: 999;
-    }
-    .navbar ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      .navbar li {
-        margin: 0 10px;
-      }
-
-      .navbar a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-      }
-
-      .footer {
-        background-color: #4CAF50;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-
-        
-        bottom: 0;
-        left: 0;
-        width: 100%;
-      }
-
-      .footer p {
-        margin: 0;
-      }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      animation: fade-in 1s ease;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
-
-    p {
-      margin-bottom: 10px;
-    }
-
-    .result {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .result h2 {
-      color: #333;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .result p {
-      color: #666;
-      margin-bottom: 5px;
-    }
-
-    .score {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .score h2 {
-      color: #333;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .score p {
-      color: #666;
-      margin-bottom: 5px;
-    }
-
-    .attribution {
-      text-align: center;
-      font-size: 12px;
-      color: #999;
-      margin-top: 30px;
-    }
-
-    /* Animation effects */
-
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes slide-up {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="navbar">
-      
-    <ul >
-
-      <li ><a href="/">Home</a></li>
-      <li ><a href="/calculator">Score Calculator</a></li>
-      <li ><a href="/recommend">Recommendations</a></li>
-      <li ><a href="/aboutus">Contact Us</a></li>
-      <li ><a href="/contact_us">Contact Us</a></li>
-
-    </ul>
-  </div>
-
-
+<%- include('partials/header') %>
+<br><br><br><br>
   <div class="container">
-    <h1 class="fade-in">ESG Score Calculator - Result</h1>
-    <div class="result fade-in">
-      <h2>Result:</h2>
-      <p>The ESG score for <strong><%= company_name %></strong> is:</p>
+    <h1 class="fade-in ">ESG Score Calculator - Result</h1>
+    <div class="fade-in content card">
+      <p>The ESG score for <strong><%= company_name %></strong> is: <%= esgscore %></p>
+      <div class="card-container"><p>Environmental Score : <%= environmentScore %></p>
+        <p>Social Score : <%= socialScore %></p>
+        <p>Governance Score : <%= governanceScore %></p>
+      </div>
+      
     </div>
-
-    <div class="score fade-in">
-      <h2>ESG Score:</h2>
-
-    </div>
-    <form id="esg_form" action="/recommend" method="get" class="fade-in"><button type="submit" class="scale-up">Recommendations</button></form>
+    <br><br><br>
+    <form id="esg_form" action="/recommend" method="get" class="fade-in"><button type="submit" class="scale-up">Improvement Recommendations</button></form>
 
   </div>
-  <div class="footer">
-    <p>Contact us: agarwal.parth25@gmail.com | Phone: +91 8005677488</p>
-  </div>
-</body>
-</html>
+
+  <%- include('partials/footer') %>
+
