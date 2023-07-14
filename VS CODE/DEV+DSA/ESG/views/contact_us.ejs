@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<style>
+  body{
+    background-image: url("/images/contactesg.jpg");
+  }
+
+.anchor:link, .anchor:visited {
+  background-color: white;
+  color: black;
+  border: 2px green;
+  border-style:outset;
+
+  
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.anchor:hover, .anchor:active {
+  background-color: green;
+  color: white;
+}
+
+</style>
+  <br><br><br><br><br>
+
+  <div class="container">
+    <div class="content">
+      <h2>Contact Us</h2>
+      <p>For any inquiries or feedback, please feel free to reach out to us using the contact information below:</p>
+      <br><br>
+      <a class="btn btn-light btn-lg anchor" href="mailto:someone@example.com" role="button">Email</a>
+      <a class="btn btn-light btn-lg anchor" href="https://www.linkedin.com/in/parthagarwal1201/">Linkdin</a>
+      <a class="btn btn-light btn-lg anchor" href="tel:8005677488">Phone</a>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+
