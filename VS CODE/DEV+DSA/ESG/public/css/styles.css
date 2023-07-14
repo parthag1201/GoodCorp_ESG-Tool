@@ -351,7 +351,7 @@ button:hover {
   margin-right: 40px;
 }
 
-.anchor {
+/* .anchor {
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -362,7 +362,7 @@ button:hover {
   transition: background-color 0.3s ease;
   width: 200px;
   text-decoration: none;
-}
+} */
 
 .align-center {
   text-align: center;
@@ -372,9 +372,10 @@ button:hover {
 }
 .crossbar{
 size: 10%;
-height: 90px;
+height:90px;
 width: 145px;
-margin-top: -20px;
+margin-top: -55px;
 margin-right: -1000px;
 position:absolute;
 }
+

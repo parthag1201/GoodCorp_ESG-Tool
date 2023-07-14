@@ -165,7 +165,9 @@ app.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["profile"] })
 );
-
+app.get("/crossbar", (req, res) => {
+  res.render("crossbar");
+});
 app.get(
   "/auth/google/index",
   passport.authenticate("google", { failureRedirect: "/" }),
