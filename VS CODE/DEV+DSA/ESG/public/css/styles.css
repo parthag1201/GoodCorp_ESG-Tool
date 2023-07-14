@@ -1,15 +1,28 @@
 /* Global styles */
 header {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  /* color: #fdfdfd8a; */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+
+
+
+  background-repeat: no-repeat, repeat;
+  background-image: url("/images/goodcorp.png");
+  background-position-x: 50px;
+  background-position-y:-40px ;
+
+  background-size: 12%;
+  background-blend-mode:multiply;
+
+
 }
 
 header * {
@@ -356,4 +369,12 @@ button:hover {
 }
 .content h2 {
   color: #ff5e00;
+}
+.crossbar{
+size: 10%;
+height: 90px;
+width: 145px;
+margin-top: -20px;
+margin-right: -1000px;
+position:absolute;
 }

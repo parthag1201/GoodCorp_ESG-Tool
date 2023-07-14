@@ -47,9 +47,7 @@ mongoose.connect(DB, {
   // useFindAndModify: false
 });
 
-const userSchema = new mongoose.Schema({
-  googleId: String,
-  secret: String,
+const esgSchema = new mongoose.Schema({
   company_name: {
     type: String,
     required: true,
@@ -104,6 +102,12 @@ const userSchema = new mongoose.Schema({
   executiveCompensationSustainability: String
 });
 
+const userSchema = new mongoose.Schema({
+  // email: String,
+  // password: String,
+  googleId: String,
+  secret: String,
+}); ///Mongoose schema class///
 
 
 userSchema.plugin(passportLocalMongoose); ///to hash and use our password
@@ -111,6 +115,7 @@ userSchema.plugin(findOrCreate); ///to create a new user using google oauth cred
 
 // Create the ESGData model
 const user = mongoose.model("User", userSchema);
+const esguser = mongoose.model("Euser", esgSchema);
 
 passport.use(user.createStrategy());
 
@@ -136,7 +141,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/secrets",
+      callbackURL: "http://localhost:3000/auth/google/index",
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     function (accessToken, refreshToken, profile, cb) {
@@ -153,19 +158,23 @@ passport.use(
 app.get("/", (req, res) => {
   res.render("index");
 });
-// app.get(
-//   "/auth/google",
-//   passport.authenticate("google", { scope: ["profile"] })
-// );
+app.get("/index", (req, res) => {
+  res.render("index");
+});
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile"] })
+);
 
-// app.get(
-//   "/auth/google/result",
-//   passport.authenticate("google", { failureRedirect: "/index" }),
-//   function (req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect("/result");
-//   }
-// );
+app.get(
+  "/auth/google/index",
+  passport.authenticate("google", { failureRedirect: "/" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/index");
+  }
+);
+
 
 app.get("/what_is_esg", (req, res) => {
   res.render("what_is_esg");
@@ -398,7 +407,7 @@ const governanceScore =Math.ceil(
 const esgscore=Math.ceil((environmentScore+governanceScore+socialScore)/3);
 
     // Create a new instance of the ESGData model with the form data
-    const esgData = new user({
+    const esgData = new esguser({
       company_name,
       geographicLocation,
       industry,
