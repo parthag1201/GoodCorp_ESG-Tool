@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<br><br><br><br>
+  <div class="container">
+    <h1 class="fade-in ">ESG Score Calculator - Result</h1>
+    <div class="fade-in content card result">
+      <div class=""score fade-in> <p>The ESG score for <strong><%= company_name %></strong> is: <%= esgscore %></p></div>
+     
+      <div class="card-container"><p>Environmental Score : <%= environmentScore %></p>
+        <p>Social Score : <%= socialScore %></p>
+        <p>Governance Score : <%= governanceScore %></p>
+      </div>
+
+      
+    </div>
+    <br><br><br>
+    <form id="esg_form" action="/recommend" method="get" class="fade-in"><button type="submit" class="scale-up">Improvement Recommendations</button></form>
+
+  </div>
+
+  <%- include('partials/footer') %>
+

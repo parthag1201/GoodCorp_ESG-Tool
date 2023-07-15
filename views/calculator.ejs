@@ -1,0 +1,506 @@
+<%- include('partials/header') %>
+<style>
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 880px;
+    /* background-color: white; */
+  }
+
+  .environment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 880px;
+  }
+
+  .environment:hover {
+    background-color: rgba(95, 195, 59, 0.589);
+  }
+
+  .social {
+    position: relative;
+    top: 0.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 880px;
+  }
+
+  .social:hover {
+    background-color: rgba(255, 166, 0, 0.625);
+  }
+  body {
+    background-image: url("/images/esgcalc.jpg");
+  }
+</style>
+<div class="container">
+  <h1 class="fade-in">ESG Score Calculator</h1>
+  <form
+    id="esg_form"
+    action="/calculate_esg"
+    method="post"
+    class="fade-in opac"
+  >
+    <!-- <label for="carbon_footprint">Carbon Footprint:</label>
+    <select name="carbon_footprint" id="carbon_footprint">
+      <option value="30">30%</option>
+      <option value="60">60%</option>
+      <option value="90">90%</option>
+    </select>
+
+    <label for="energy_consumption">Energy Consumption:</label>
+    <input
+      type="number"
+      id="energy_consumption"
+      name="energy_consumption"
+      required
+    />
+
+    <label for="water_usage">Water Usage:</label>
+    <input type="number" id="water_usage" name="water_usage" required />
+
+    <label for="waste_management">Waste Management:</label>
+    <input
+      type="number"
+      id="waste_management"
+      name="waste_management"
+      required
+    /> -->
+<br>
+    <h2 <div class="details">Company Details</h2>
+    <label for="company_name">Company Name:</label>
+    <input type="text" name="company_name" required />
+
+    <label>Geographic Location:</label>
+    <input type="text" name="geographicLocation" required /><br />
+
+    <label>Industry:</label>
+    <input type="text" name="industry" required /><br />
+
+    <label>Annual Revenue:</label>
+    <input type="number" name="annualRevenue" required /><br />
+
+    <label>Average number of employees over the past 3 years (FTE):</label>
+    <input type="number" name="averageEmployees" required /><br />
+
+    <label>New hirings over the past 3 years (FTE):</label>
+    <input type="number" name="newHirings" required /><br />
+
+    <label
+      >Are the aforementioned values documented in a sustainability report (e.g.
+      GRI)?</label
+    >
+    <select name="sustainabilityReport" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    <label>Number of KPIs measured (across all three components)?</label>
+    <select name="numberOfKPIs" required>
+      <option value="a">20 or more</option>
+      <option value="b">10-15</option>
+      <option value="c">5 or fewer</option></select
+    ><br />
+
+    <label>Are objectives and risks sufficiently explained?</label>
+    <select name="objectivesAndRisks" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    <label>Are plan/actual deviations presented?</label>
+    <select name="planDeviations" required>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option></select
+    ><br />
+
+    
+    <br>
+    <br>
+
+
+    
+    <h2>Environment</h2>
+
+    <!-- Energy consumption -->
+    <label for="energy_consumption_percentage">Energy consumption (Consumed electricity) (GWh) – percentage renewable / percentage reduction compared to industry average:</label>
+    <select name="energy_consumption_percentage" id="energy_consumption_percentage" required>
+      <option value="">Select an option</option>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option>
+    </select>
+
+    <!-- Water consumption -->
+    <label for="water_consumption_percentage">Water consumption (Consumed water) (m3) percentage reduction compared to industry average:</label>
+    <select name="water_consumption_percentage" id="water_consumption_percentage" required>
+      <option value="">Select an option</option>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option>
+    </select>
+
+    <!-- Waste production -->
+    <label for="waste_production">Waste (Production of waste) (kg) / percentage reduction:</label>
+    <select name="waste_production" id="waste_production" required>
+      <option value="">Select an option</option>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option>
+    </select>
+
+    <!-- Percentage of waste recycled -->
+    <label for="waste_recycled_percentage">Percentage waste recycled (%):</label>
+    <select name="waste_recycled_percentage" id="waste_recycled_percentage" required>
+      <option value="">Select an option</option>
+      <option value="a">above 60%</option>
+      <option value="b">40-60%</option>
+      <option value="c">below 40%</option>
+    </select>
+
+    <!-- CO2 emissions -->
+    <label for="co2_emissions">CO2 emissions (carbon footprint) (tCO2e) / percentage reduction compared to baseline year:</label>
+    <select name="co2_emissions" id="co2_emissions" required>
+      <option value="">Select an option</option>
+      <option value="a">above 20%</option>
+      <option value="b">10-20%</option>
+      <option value="c">below 10%</option>
+    </select>
+
+    <!-- Measures to reduce raw material use -->
+    <label for="reduce_raw_materials">Number of measures to reduce the use of raw materials:</label>
+    <select name="reduce_raw_materials" id="reduce_raw_materials" required>
+      <option value="">Select an option</option>
+      <option value="a">above 6</option>
+      <option value="b">4-6</option>
+      <option value="c">below 4</option>
+    </select>
+
+    <!-- Measures to reduce CO2 emissions -->
+    <label for="reduce_co2_emissions">Number of measures to reduce CO2 emissions:</label>
+    <select name="reduce_co2_emissions" id="reduce_co2_emissions" required>
+      <option value="">Select an option</option>
+      <option value="a">above 6</option>
+      <option value="b">4-6</option>
+      <option value="c">below 4</option>
+    </select>
+
+    <!-- Energy costs as a percentage of turnover -->
+    <label for="energy_costs">What are your development of energy costs in % of turnover?</label>
+    <select name="energy_costs" id="energy_costs" required>
+      <option value="">Select an option</option>
+      <option value="a">5-10%</option>
+      <option value="b">10-15%</option>
+      <option value="c">Above 15%</option>
+    </select>
+
+    <!-- Number of environmental accidents -->
+    <label for="environmental_accidents">Number of environmental accidents:</label>
+    <select name="environmental_accidents" id="environmental_accidents" required>
+      <option value="">Select an option</option>
+      <option value="a">Minimal to none</option>
+      <option value="b">Occasional</option>
+      <option value="c">Frequent</option>
+    </select>
+
+    <!-- Energy efficiency of sites/factories -->
+    <label for="energy_efficiency">How energy efficient are sites/factories?</label>
+    <select name="energy_efficiency" id="energy_efficiency" required>
+      <option value="">Select an option</option>
+      <option value="a">High</option>
+      <option value="b">Moderate</option>
+      <option value="c">Low</option>
+    </select>
+
+    <!-- Percentage of reduced resource use -->
+    <label for="reduced_resource_use">Percentage of reduced resource use (%):</label>
+    <select name="reduced_resource_use" id="reduced_resource_use" required>
+      <option value="">Select an option</option>
+      <option value="a">Higher than 20%</option>
+      <option value="b">10-15%</option>
+      <option value="c">Below 10%</option>
+    </select>
+
+    <!-- CO2 emissions in relation to other market participants -->
+    <label for="co2_emissions_relation">Co2 emissions in relation to other market participants (%):</label>
+    <select name="co2_emissions_relation" id="co2_emissions_relation" required>
+      <option value="">Select an option</option>
+      <option value="a">20% or less</option>
+      <option value="b">Around industry average</option>
+      <option value="c">Above industry average</option>
+    </select>
+
+    <!-- Recycling rate in relation to competitors -->
+    <label for="recycling_rate">Recycling rate in relation to competitors (%):</label>
+    <select name="recycling_rate" id="recycling_rate" required>
+      <option value="">Select an option</option>
+      <option value="a">Higher than 20%</option>
+      <option value="b">Around industry average</option>
+      <option value="c">Below industry average</option>
+    </select>
+    <br>
+    <br>
+
+
+
+    <!-- Social-related questions -->
+    <h2>Social</h2>
+
+    <!-- Employee well-being and satisfaction -->
+    <label for="employee_satisfaction">What is the percentage of Employee Well-being and Satisfaction in annual survey?</label>
+    <select name="employee_satisfaction" id="employee_satisfaction" required>
+      <option value="">Select an option</option>
+      <option value="a">Above 80%</option>
+      <option value="b">Above 60-80%</option>
+      <option value="c">Below 60%</option>
+    </select>
+
+    <!-- Product recall rate -->
+    <label for="product_recall_rate">What is your product recall rate?</label>
+    <select name="product_recall_rate" id="product_recall_rate" required>
+      <option value="">Select an option</option>
+      <option value="a">Less than 0.5%</option>
+      <option value="b">More than 1%</option>
+      <option value="c">Between 0.5% and 1%</option>
+    </select>
+
+    <!-- Activities to improve workplace -->
+    <label for="improve_workplace">Number of activities in place to improve workplace:</label>
+    <select name="improve_workplace" id="improve_workplace" required>
+      <option value="">Select an option</option>
+      <option value="a">Above 6</option>
+      <option value="b">4-6</option>
+      <option value="c">Below 4</option>
+    </select>
+
+    <!-- Code of conduct or policy on human rights and labor standards -->
+    <label for="code_of_conduct">Does your company have a code of conduct or policy that explicitly addresses human rights and labor standards?</label>
+    <select name="code_of_conduct" id="code_of_conduct" required>
+      <option value="">Select an option</option>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option>
+    </select>
+
+    <!-- Resolution of reported labor rights violations -->
+    <label for="labor_violations_resolution">In how many days do you resolve reported labor rights violations and provide remediation to affected workers?</label>
+    <select name="labor_violations_resolution" id="labor_violations_resolution" required>
+      <option value="">Select an option</option>
+      <option value="a">Within 90 days</option>
+      <option value="b">Within 120 days</option>
+      <option value="c">Within 150 days</option>
+    </select>
+
+    <!-- Frequency of assessments for health and safety hazards -->
+    <label for="health_safety_assessments">How frequently are assessments or audits conducted to identify and address potential health and safety hazards in the workplace?</label>
+    <select name="health_safety_assessments" id="health_safety_assessments" required>
+      <option value="">Select an option</option>
+      <option value="a">Monthly or bi-monthly</option>
+      <option value="b">Quarterly</option>
+      <option value="c">Bi-Yearly or less frequently</option>
+    </select>
+
+    <!-- Engagement with stakeholders to understand community needs -->
+    <label for="stakeholder_engagement">Does your company engage with stakeholders to understand community needs and align its initiatives accordingly?</label>
+    <select name="stakeholder_engagement" id="stakeholder_engagement" required>
+      <option value="">Select an option</option>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option>
+    </select>
+
+    <!-- Opportunities for skill upgrades and career advancement -->
+    <label for="skill_upgrades">Which of the following best describes a company's approach to providing opportunities for skill upgrades and career advancement?</label>
+    <select name="skill_upgrades" id="skill_upgrades" required>
+      <option value="">Select an option</option>
+      <option value="a">Does the company actively invest in employee development programs and provide resources for upgrading skills, fostering a supportive environment for career growth?</option>
+      <option value="b">Does the company offer limited opportunities for skill enhancement and career progression, resulting in a stagnant work environment?</option>
+      <option value="c">Does the company neglect employee skill development and fail to provide avenues for career advancement, hindering professional growth within the organization?</option>
+    </select>
+
+    <!-- Actions for inadequate social or ethical practices in supply chain -->
+    <label for="supply_chain_actions">What actions does your company take if a supply chain partner is found to have inadequate social or ethical practices?</label>
+    <select name="supply_chain_actions" id="supply_chain_actions" required>
+      <option value="">Select an option</option>
+      <option value="a">Promptly communicate concerns with the supply chain partner, assess the severity and impact of the inadequate practices on the company's reputation and stakeholder expectations, collaborate with the partner to find solutions, conduct regular audits or inspections to verify compliance and share results transparently, consider alternative suppliers if the partner fails to show significant progress.</option>
+      <option value="b">Express concerns to the supply chain partner, assess the severity and impact of the inadequate practices on the company's reputation and compliance, engage in collaborative problem-solving with the partner, conduct periodic audits or inspections to verify compliance, seek limited engagement with stakeholders to address the concerns with limited transparency, consider exploring alternative suppliers if the partner fails to demonstrate improvement.</option>
+      <option value="c">May not prioritize or actively address inadequate social or ethical practices in the supply chain, minimal communication or engagement with the supply chain partner about the concerns, limited or no assessment of the severity and impact of the inadequate practices, lack regular audits or inspections to verify compliance, little to no engagement with stakeholders or industry associations to address the concerns, unlikely to consider alternative suppliers or explore ethical partnerships, limited transparency.</option>
+    </select>
+
+    <!-- Percentage of workforce consisting of underrepresented groups -->
+    <label for="underrepresented_groups">What percentage of your workforce consists of underrepresented groups?</label>
+    <select name="underrepresented_groups" id="underrepresented_groups" required>
+      <option value="">Select an option</option>
+      <option value="a">30% higher than industry average</option>
+      <option value="b">20% higher than industry average</option>
+      <option value="c">10% higher than industry average</option>
+    </select>
+
+    <!-- Addressing and eliminating unconscious bias -->
+    <label for="unconscious_bias">What steps does your company take to address and eliminate unconscious bias (gender, race, ethnicity, age, sexual orientation, or disability) in hiring, promotion, and performance evaluation processes?</label>
+    <select name="unconscious_bias" id="unconscious_bias" required>
+      <option value="">Select an option</option>
+      <option value="a">Conduct thorough assessments of current hiring, promotion, and performance evaluation processes to identify potential areas of unconscious bias; implement structured and standardized interview processes that focus on job-related criteria and skills, rather than personal characteristics, provide unconscious bias training to employees involved in hiring, promotion, and evaluation processes to increase awareness and mitigate bias, implement diversity and inclusion initiatives to attract and retain diverse talent, regularly analyze and monitor data related to hiring, promotion, and performance evaluation to identify any potential disparities or bias.</option>
+      <option value="b">Conduct assessments of hiring, promotion, and performance evaluation processes to identify potential areas of bias, provide limited unconscious bias training to employees involved in these processes, make efforts to implement structured and standardized interview processes to reduce bias, conduct periodic reviews of data related to diversity and inclusion to monitor progress and identify potential areas of improvement.</option>
+      <option value="c">Limited or no assessments conducted to identify potential bias in these processes, little to no unconscious bias training provided to employees involved in hiring, promotion, and evaluation, reliance on subjective decision-making processes that may be prone to bias, limited analysis or monitoring of data related to diversity and inclusion.</option>
+    </select>
+
+    <!-- Annual contribution of pre-tax profits to local communities -->
+    <label for="community_contribution">What Annual contribution of pre-tax profits contribute to the local communities where you operate?</label>
+    <select name="community_contribution" id="community_contribution" required>
+      <option value="">Select an option</option>
+      <option value="a">More than 2%</option>
+      <option value="b">1%</option>
+      <option value="c">Less than 1%</option>
+    </select>
+
+    <!-- Transparency and traceability in supply chain -->
+    <label for="supply_chain_transparency">How does your company ensure transparency and traceability in its supply chain, particularly regarding the environmental and social impacts of sourced materials or products?</label>
+    <select name="supply_chain_transparency" id="supply_chain_transparency" required>
+      <option value="">Select an option</option>
+      <option value="a">Implement a supplier code of conduct that includes specific requirements related to environmental and social impact, conduct thorough due diligence on suppliers to assess their environmental and social practices, engage with suppliers to promote transparency and traceability by requesting relevant documentation, such as certifications, audits, and reports regarding their environmental and social performance.</option>
+      <option value="b">Have a supplier code of conduct that outlines general expectations for environmental and social practices, conduct periodic assessments of suppliers' environmental and social practices, albeit with limited depth and frequency, encourage suppliers to provide some level of transparency and traceability information regarding the environmental and social impacts of sourced materials or products.</option>
+      <option value="c">Have limited or no formalized policies or code of conduct for suppliers related to environmental and social impacts, rarely conduct assessments or due diligence on suppliers regarding their environmental and social practices, lack transparency and traceability mechanisms in place to track the environmental and social impacts of sourced materials or products.</option>
+    </select>
+
+    <!-- Annual spending on philanthropic activities -->
+    <label for="philanthropic_spending">How much % of annual revenue do you spend on philanthropic activities and disclose impact metrics?</label>
+    <select name="philanthropic_spending" id="philanthropic_spending" required>
+      <option value="">Select an option</option>
+      <option value="a">More than 1%</option>
+      <option value="b">Between 0.5% and 1%</option>
+      <option value="c">Less than 0.5%</option>
+    </select>
+    <br>
+    <br>
+
+
+
+    <!-- Governance-related questions -->
+    <h2>Governance</h2>
+
+    <!-- Code of ethics or guiding principles -->
+    <label for="code_of_ethics">Does the company have a code of ethics or a similar set of guiding principles?</label>
+    <select name="code_of_ethics" id="code_of_ethics" required>
+      <option value="">Select an option</option>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option>
+    </select>
+
+    <!-- Identification and assessment of potential risks -->
+    <label for="potential_risks">How does your company identify and assess potential risks, both internal and external, that may impact its operations or stakeholders?</label>
+    <select name="potential_risks" id="potential_risks" required>
+      <option value="">Select an option</option>
+      <option value="a">Utilizing ESG frameworks and standards (GRI, SASB, TCFD), Establishing governance structures and Conducting risk assessments</option>
+      <option value="b">Utilizing ESG frameworks and standards (GRI, SASB, TCFD)</option>
+      <option value="c">Conducting risk assessments</option>
+    </select>
+
+    <!-- Regular review and update of risk management practices -->
+    <label for="risk_management_review">Does your company regularly review and update its risk management practices? If yes, please describe the frequency and process for conducting these reviews</label>
+    <select name="risk_management_review" id="risk_management_review" required>
+      <option value="">Select an option</option>
+      <option value="a">Once in 30 days</option>
+      <option value="b">Once in 90 days</option>
+      <option value="c">Once in 120 days</option>
+    </select>
+
+    <!-- Disclosure of executive compensation -->
+    <label for="executive_compensation">Does your company disclose information regarding executive compensation to shareholders or the public? If yes, please provide details about the level of transparency and the information disclosed.</label>
+    <select name="executive_compensation" id="executive_compensation" required>
+      <option value="">Select an option</option>
+      <option value="a">Yes, by Performance metrics and goals and Components of executive compensation</option>
+      <option value="b">Yes, by Compensation committee report</option>
+      <option value="c">No</option>
+    </select>
+
+    <!-- Measures to encourage diverse board nominations -->
+    <label for="diverse_board_nominations">Which of the following measures does your company utilize to encourage the nomination and appointment of diverse candidates to the board?</label>
+    <select name="diverse_board_nominations" id="diverse_board_nominations" required>
+      <option value="">Select an option</option>
+      <option value="a">Actively seeking out candidates from underrepresented groups through targeted recruitment efforts</option>
+      <option value="b">Engaging executive search firms with a focus on diversity and inclusion</option>
+      <option value="c">Utilizing professional networks and organizations that promote diversity and inclusion in board appointments</option>
+    </select>
+
+    <!-- Allegations or investigations related to corruption or unethical practices -->
+    <label for="corruption_allegations">Has the company faced any allegations or investigations related to corruption or other unethical practices in the past three years?</label>
+    <select name="corruption_allegations" id="corruption_allegations" required>
+      <option value="">Select an option</option>
+      <option value="a">No</option>
+      <option value="b">Yes, allegations without any legal actions</option>
+      <option value="c">Yes, allegations with legal actions</option>
+    </select>
+
+    <!-- Composition of the board -->
+    <label for="board_composition">What is the composition of your company's board of directors in terms of gender diversity?</label>
+    <select name="board_composition" id="board_composition" required>
+      <option value="">Select an option</option>
+      <option value="a">40% or more female directors</option>
+      <option value="b">30-40% female directors</option>
+      <option value="c">Less than 30% female directors</option>
+    </select>
+
+    <!-- Existence of a risk management committee -->
+    <label for="risk_management_committee">Does your company have a dedicated risk management committee or similar governing body responsible for overseeing risk-related activities?</label>
+    <select name="risk_management_committee" id="risk_management_committee" required>
+      <option value="">Select an option</option>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option>
+    </select>
+
+    <!-- Use of independent auditors -->
+    <label for="independent_auditors">Does your company use independent auditors to assess its financial and non-financial performance?</label>
+    <select name="independent_auditors" id="independent_auditors" required>
+      <option value="">Select an option</option>
+      <option value="a">Yes</option>
+      <option value="b">Partial</option>
+      <option value="c">No</option>
+    </select>
+
+    <!-- Stakeholder engagement in decision-making processes -->
+    <label for="stakeholder_engagement_governance">How does your company engage stakeholders in its decision-making processes?</label>
+    <select name="stakeholder_engagement_governance" id="stakeholder_engagement_governance" required>
+      <option value="">Select an option</option>
+      <option value="a">Actively seek input from stakeholders through surveys, consultations, and dialogue sessions, consider stakeholder perspectives in decision-making, and provide regular updates on how stakeholder input is incorporated.</option>
+      <option value="b">Seek input from stakeholders through surveys or consultations on specific topics or projects, share selected information about decisions and actions taken based on stakeholder input.</option>
+      <option value="c">Limited or no formalized processes to engage stakeholders in decision-making, minimal transparency in decision-making processes, little to no sharing of information on how stakeholder input is considered or incorporated.</option>
+    </select>
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+    <br>
+
+
+    <button type="submit" class="scale-up">Calculate ESG Score</button>
+  </form>
+
+  <div class="attribution slide-up">
+    <p>ESG Score Calculator &copy; 2023. All rights reserved.</p>
+    <p>
+      Attribution: Icons made by
+      <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+        >Freepik</a
+      >
+      from
+      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </p>
+  </div>
+</div>
+<%- include('partials/footer') %>
